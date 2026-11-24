@@ -27,7 +27,7 @@ pnpm dev
 ## Roadmap
 
 1. Scaffold & tooling ✅
-2. Design system (tokens, theme, layout shell)
+2. Design system (tokens, theme, layout shell) ✅
 3. Content layer (typed, zod-validated)
 4. Sections (hero, projects, experience, skills, certifications)
 5. Contact form (server action, Mailer → SES, Turnstile)
