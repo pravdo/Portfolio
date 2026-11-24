@@ -1,0 +1,59 @@
+// Reusable style patterns. These emit no CSS unless included.
+
+@mixin container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-pad);
+}
+
+@mixin visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@mixin focus-ring {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+// Eyebrow / label text: small, mono, uppercase.
+@mixin label {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+// The faint engineering grid behind the hero. Drawn on a ::before layer so the fade-out
+// mask only affects the grid, never the content. The host needs `position: relative`.
+@mixin grid-background {
+  isolation: isolate;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background-image:
+      linear-gradient(to right, var(--color-grid-line) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--color-grid-line) 1px, transparent 1px);
+    background-size: var(--grid-size) var(--grid-size);
+    mask-image: linear-gradient(to bottom, #000 40%, transparent);
+    pointer-events: none;
+  }
+}
+
+@mixin transition($props...) {
+  transition-property: $props;
+  transition-duration: var(--duration-base);
+  transition-timing-function: var(--ease-out);
+}

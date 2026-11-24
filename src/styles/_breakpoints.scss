@@ -1,0 +1,20 @@
+// Mobile-first breakpoints. Usage: @include bp.up(md) { ... }
+@use "sass:map";
+
+$breakpoints: (
+  sm: 36rem,
+  md: 48rem,
+  lg: 64rem,
+);
+
+@mixin up($name) {
+  @media (min-width: map.get($breakpoints, $name)) {
+    @content;
+  }
+}
+
+@mixin down($name) {
+  @media (max-width: calc(#{map.get($breakpoints, $name)} - 0.02rem)) {
+    @content;
+  }
+}

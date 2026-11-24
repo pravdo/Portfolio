@@ -1,0 +1,113 @@
+// Design tokens. The single source of truth for colour, type, space, radius and motion.
+// Components read these as CSS custom properties: never hard-code a colour or a spacing value.
+
+@mixin light-colors {
+  --color-bg: #fafaf9;
+  --color-surface: #ffffff;
+  --color-surface-raised: #f4f4f2;
+  --color-text: #1c1917;
+  --color-text-muted: #57534e;
+  --color-border: #e7e5e4;
+  --color-border-strong: #d6d3d1;
+  --color-accent: #0f766e;
+  --color-accent-hover: #115e59;
+  --color-accent-soft: #ccfbf1;
+  --color-on-accent: #ffffff;
+  --color-success: #15803d;
+  --color-warning: #b45309;
+  --color-danger: #b91c1c;
+  --color-grid-line: rgb(28 25 23 / 0.05);
+  --shadow-sm: 0 1px 2px rgb(28 25 23 / 0.06);
+  --shadow-md: 0 4px 16px rgb(28 25 23 / 0.08);
+  color-scheme: light;
+}
+
+@mixin dark-colors {
+  --color-bg: #0c0c0d;
+  --color-surface: #141416;
+  --color-surface-raised: #1c1c1f;
+  --color-text: #ededed;
+  --color-text-muted: #a1a1aa;
+  --color-border: #27272a;
+  --color-border-strong: #3f3f46;
+  --color-accent: #2dd4bf;
+  --color-accent-hover: #5eead4;
+  --color-accent-soft: rgb(45 212 191 / 0.12);
+  --color-on-accent: #042f2e;
+  --color-success: #4ade80;
+  --color-warning: #fbbf24;
+  --color-danger: #f87171;
+  --color-grid-line: rgb(237 237 237 / 0.04);
+  --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.4);
+  --shadow-md: 0 4px 16px rgb(0 0 0 / 0.5);
+  color-scheme: dark;
+}
+
+:root {
+  @include light-colors;
+
+  // Typography. Font families are injected by next/font as --font-geist-sans / --font-geist-mono.
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, "SFMono-Regular", monospace;
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem);
+  --text-2xl: clamp(1.5rem, 1.2rem + 1.2vw, 2rem);
+  --text-3xl: clamp(2rem, 1.5rem + 2.2vw, 3rem);
+  --text-4xl: clamp(2.5rem, 1.6rem + 4vw, 4.25rem);
+
+  --leading-tight: 1.15;
+  --leading-snug: 1.35;
+  --leading-normal: 1.6;
+
+  --tracking-tight: -0.02em;
+  --tracking-wide: 0.08em;
+
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+
+  // Spacing (4px base)
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+  --space-9: 6rem;
+  --space-10: 8rem;
+
+  // Layout
+  --container-max: 68rem;
+  --container-pad: clamp(1rem, 0.5rem + 2.5vw, 2rem);
+  --header-height: 3.75rem;
+  --grid-size: 64px;
+
+  // Shape
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-full: 999px;
+  --border-width: 1px;
+
+  // Motion
+  --duration-fast: 120ms;
+  --duration-base: 200ms;
+  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+// Theme set explicitly (inline script in <head> or the toggle).
+:root[data-theme="dark"] {
+  @include dark-colors;
+}
+
+// No JS at all: follow the OS preference.
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    @include dark-colors;
+  }
+}
