@@ -13,6 +13,7 @@ Blueprint: docs/blueprint.md · Implementation plan: see "Roadmap" in README.md
 - Install: pnpm install
 - Dev: pnpm dev
 - Check everything: pnpm lint && pnpm typecheck && pnpm test && pnpm build
+- Unit tests: pnpm test (Vitest, pure logic in tests/unit)
 - E2E: pnpm e2e
 
 ## Architecture rules
