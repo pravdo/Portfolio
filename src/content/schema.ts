@@ -105,6 +105,21 @@ export const CertificationSchema = z.object({
   verifyUrl: z.url().optional(),
 });
 
+export const SectionCopySchema = z.object({
+  /** Small mono label above the heading, e.g. "01 / Projects". */
+  eyebrow: NonEmpty,
+  title: NonEmpty,
+  intro: NonEmpty.optional(),
+});
+
+export const SectionsSchema = z.object({
+  projects: SectionCopySchema,
+  experience: SectionCopySchema,
+  skills: SectionCopySchema,
+  certifications: SectionCopySchema,
+  contact: SectionCopySchema,
+});
+
 /**
  * Everything together, with cross-reference checks the individual schemas can't do:
  * unique ids, and every skill's `usedIn` pointing at a real project or role.
@@ -112,6 +127,7 @@ export const CertificationSchema = z.object({
 export const ContentSchema = z
   .object({
     profile: ProfileSchema,
+    sections: SectionsSchema,
     projects: z.array(ProjectSchema),
     experience: z.array(RoleSchema),
     skills: z.array(SkillGroupSchema),
@@ -159,6 +175,7 @@ export const ContentSchema = z
 export type ContentInput = z.input<typeof ContentSchema>;
 export type Content = z.output<typeof ContentSchema>;
 export type Profile = Content["profile"];
+export type SectionCopy = Content["sections"]["projects"];
 export type Project = Content["projects"][number];
 export type Role = Content["experience"][number];
 export type SkillGroup = Content["skills"][number];

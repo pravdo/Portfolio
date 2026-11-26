@@ -14,6 +14,13 @@ function valid(): ContentInput {
       social: { github: "https://github.com/ada", linkedin: "https://linkedin.com/in/ada" },
       sourceUrl: "https://github.com/ada/site",
     },
+    sections: {
+      projects: { eyebrow: "01", title: "Projects" },
+      experience: { eyebrow: "02", title: "Experience" },
+      skills: { eyebrow: "03", title: "Skills" },
+      certifications: { eyebrow: "04", title: "Certifications" },
+      contact: { eyebrow: "05", title: "Contact" },
+    },
     projects: [
       {
         slug: "engine",

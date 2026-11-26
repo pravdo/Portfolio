@@ -1,0 +1,13 @@
+.grid {
+  display: grid;
+  gap: var(--space-5);
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 19rem), 1fr));
+
+  > li {
+    display: flex;
+
+    > * {
+      flex: 1;
+    }
+  }
+}
