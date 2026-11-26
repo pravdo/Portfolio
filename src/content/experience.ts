@@ -1,30 +1,29 @@
 import type { ContentInput } from "./schema";
 
-// TODO(content): replace both roles with your real experience, newest first.
-// Outcomes, not duties: "Cut checkout p95 from 1.2 s to 300 ms", not "Worked on checkout".
+// Newest first. Outcomes, not duties; add numbers (users, latency, time saved) when you have them.
 export const experience = [
   {
-    id: "company-a",
-    company: "Company A",
-    title: "Senior Full-stack Engineer",
-    location: "Remote",
-    start: "2023-01",
+    id: "softserve",
+    company: "SoftServe",
+    companyUrl: "https://www.softserveinc.com/",
+    title: "Intermediate Web Developer",
+    start: "2022-06",
     end: "present",
     outcomes: [
-      "TODO: outcome with a number — what changed because of your work.",
-      "TODO: second outcome.",
-      "TODO: third outcome (optional).",
+      "Delivered complex workflows end to end in an enterprise procurement platform: multi-step cost requests, drawing analysis and analytics dashboards, with realtime status updates over AWS AppSync.",
+      "Built NestJS REST APIs on PostgreSQL (migrations, SQL views, modular architecture) and Angular frontends with NgRx, RxJS and Signals.",
+      "Secured features with policy-based authorization in Cerbos, enforced consistently across frontend and backend.",
+      "Raised release confidence with Jest and Playwright suites and CI/CD in Azure DevOps and AWS CodeBuild, and supported self-hosted production apps (SQL, PowerShell, Ansible).",
     ],
-    stack: ["Angular", "NestJS", "AWS"],
-  },
-  {
-    id: "company-b",
-    company: "Company B",
-    title: "Full-stack Engineer",
-    location: "Sofia",
-    start: "2020-06",
-    end: "2022-12",
-    outcomes: ["TODO: outcome with a number.", "TODO: second outcome."],
-    stack: [".NET", "React", "PostgreSQL"],
+    stack: [
+      "Angular",
+      "TypeScript",
+      "NestJS",
+      "PostgreSQL",
+      "NgRx",
+      "AWS AppSync",
+      "Cerbos",
+      "Playwright",
+    ],
   },
 ] satisfies ContentInput["experience"];

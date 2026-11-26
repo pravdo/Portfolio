@@ -7,6 +7,10 @@ describe("formatYearMonth", () => {
     expect(formatYearMonth("2020-12")).toBe("Dec 2020");
   });
 
+  it("passes a bare year through", () => {
+    expect(formatYearMonth("2023")).toBe("2023");
+  });
+
   it("handles present", () => {
     expect(formatYearMonth("present")).toBe("Present");
   });

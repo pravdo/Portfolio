@@ -2,12 +2,12 @@ import type { ContentInput } from "./schema";
 
 export const profile = {
   name: "Pravdomir Kostov",
-  role: "Full-stack engineer — Angular, NestJS, .NET, AWS",
+  role: "Intermediate Web Developer",
   tagline:
-    "I build distributed systems that stay correct under load, with interfaces people enjoy using.",
+    "I build enterprise web apps end to end: Angular frontends, NestJS APIs on PostgreSQL, and the AWS services that connect them.",
   location: "Varna, Bulgaria",
   email: "pravdo00@gmail.com",
-  cvUrl: "/cv.pdf", // TODO(content): drop your real CV at public/cv.pdf
+  cvUrl: "/cv.pdf",
   social: {
     github: "https://github.com/pravdo",
     linkedin: "https://www.linkedin.com/in/pravdomir-kostov-798769216/",

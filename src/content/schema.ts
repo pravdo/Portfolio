@@ -4,6 +4,11 @@ import { z } from "zod";
 export const YearMonth = z.string().regex(/^\d{4}-(0[1-9]|1[0-2])$/, "Use YYYY-MM, e.g. 2024-03");
 
 /** Absolute https URL, or a site-relative path such as "/cv.pdf". */
+/** "2023" or "2023-10": certificates often only state the year. */
+export const YearOrMonth = z
+  .string()
+  .regex(/^\d{4}(-(0[1-9]|1[0-2]))?$/, "Use YYYY or YYYY-MM, e.g. 2023 or 2023-10");
+
 const Href = z.union([z.url({ protocol: /^https?$/ }), z.string().regex(/^\/[^/]/)]);
 
 const Slug = z.string().regex(/^[a-z0-9]+(-[a-z0-9]+)*$/, "kebab-case slug");
@@ -83,11 +88,19 @@ export const SkillGroupSchema = z.object({
   skills: z.array(SkillSchema).min(1),
 });
 
+export const EducationSchema = z.object({
+  institution: NonEmpty,
+  degree: NonEmpty,
+  field: NonEmpty.optional(),
+  /** Graduation year, e.g. "2023". */
+  graduated: z.string().regex(/^\d{4}$/, "Use a four-digit year"),
+});
+
 export const CertificationSchema = z.object({
   name: NonEmpty,
   issuer: NonEmpty,
   status: z.enum(["earned", "in-progress"]),
-  issued: YearMonth.optional(),
+  issued: YearOrMonth.optional(),
   /** Public verification page. Badges must link here once earned. */
   verifyUrl: z.url().optional(),
 });
@@ -102,6 +115,7 @@ export const ContentSchema = z
     projects: z.array(ProjectSchema),
     experience: z.array(RoleSchema),
     skills: z.array(SkillGroupSchema),
+    education: z.array(EducationSchema).default([]),
     certifications: z.array(CertificationSchema),
   })
   .superRefine((content, ctx) => {
@@ -148,4 +162,5 @@ export type Profile = Content["profile"];
 export type Project = Content["projects"][number];
 export type Role = Content["experience"][number];
 export type SkillGroup = Content["skills"][number];
+export type Education = Content["education"][number];
 export type Certification = Content["certifications"][number];

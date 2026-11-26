@@ -1,6 +1,5 @@
 import type { ContentInput } from "./schema";
 
-// Order here = order on the page. Links render only when they exist.
 export const projects = [
   {
     slug: "seatsync",

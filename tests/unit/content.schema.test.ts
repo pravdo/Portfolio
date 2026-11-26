@@ -52,6 +52,7 @@ describe("ContentSchema", () => {
     expect(parsed.projects[0]?.links).toEqual({});
     expect(parsed.projects[0]?.featured).toBe(true);
     expect(parsed.experience[0]?.stack).toEqual([]);
+    expect(parsed.education).toEqual([]);
   });
 
   it("rejects a malformed month", () => {
@@ -92,6 +93,20 @@ describe("ContentSchema", () => {
     input.projects[0]!.links = { live: "javascript:alert(1)" };
     input.projects[0]!.slug = "Not A Slug";
     expect(messages(input).length).toBeGreaterThanOrEqual(2);
+  });
+
+  it("rejects a non-year graduation value", () => {
+    const input = valid();
+    input.education = [{ institution: "Uni", degree: "BSc", graduated: "2023-06" }];
+    expect(messages(input)).toContain("Use a four-digit year");
+  });
+
+  it("accepts a year-only certification date but not a malformed one", () => {
+    const input = valid();
+    input.certifications[0]!.issued = "2023";
+    expect(messages(input)).toEqual([]);
+    input.certifications[0]!.issued = "23";
+    expect(messages(input)).toContain("Use YYYY or YYYY-MM, e.g. 2023 or 2023-10");
   });
 
   it("formats issues with their path", () => {

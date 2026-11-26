@@ -44,4 +44,11 @@ export const certifications = [
     issued: "2023-10",
     verifyUrl: "https://certificate.algoexpert.io/FE-f4db3ea733",
   },
+  {
+    name: "Meta Front-End Developer",
+    issuer: "Meta",
+    status: "earned",
+    issued: "2023-02",
+    verifyUrl: "https://www.coursera.org/account/accomplishments/professional-cert/GHE6ABD6PLL5",
+  },
 ] satisfies ContentInput["certifications"];
