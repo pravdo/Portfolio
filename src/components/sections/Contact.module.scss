@@ -1,0 +1,10 @@
+.layout {
+  display: grid;
+  justify-items: start;
+  gap: var(--space-5);
+}
+
+.direct {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}

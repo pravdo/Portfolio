@@ -1,5 +1,6 @@
 import { content } from "@/content";
 import { Certifications } from "@/components/sections/Certifications";
+import { Contact } from "@/components/sections/Contact";
 import { Experience } from "@/components/sections/Experience";
 import { Hero } from "@/components/sections/Hero";
 import { Projects } from "@/components/sections/Projects";
@@ -19,6 +20,7 @@ export default function Home() {
       />
       <Skills copy={sections.skills} groups={content.skills} />
       <Certifications copy={sections.certifications} items={content.certifications} />
+      <Contact copy={sections.contact} profile={profile} />
     </>
   );
 }
