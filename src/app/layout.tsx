@@ -4,6 +4,7 @@ import { Footer } from "@/components/layout/Footer";
 import { Header, type NavItem } from "@/components/layout/Header";
 import { SkipLink } from "@/components/layout/SkipLink";
 import { content } from "@/content";
+import { getSiteUrl } from "@/lib/site";
 import { themeInitScript } from "@/lib/theme";
 import "@/styles/globals.scss";
 
@@ -19,9 +20,23 @@ const nav: NavItem[] = [
   { href: "/#contact", label: "Contact" },
 ];
 
+const title = `${profile.name} — ${profile.role}`;
+
 export const metadata: Metadata = {
-  title: `${profile.name} — ${profile.role}`,
+  metadataBase: getSiteUrl(),
+  title: { default: title, template: `%s · ${profile.name}` },
   description: profile.tagline,
+  authors: [{ name: profile.name, url: profile.social.github }],
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "profile",
+    url: "/",
+    siteName: profile.name,
+    title,
+    description: profile.tagline,
+    locale: "en_GB",
+  },
+  twitter: { card: "summary_large_image", title, description: profile.tagline },
 };
 
 export const viewport: Viewport = {
