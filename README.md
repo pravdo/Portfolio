@@ -24,11 +24,18 @@ pnpm dev
 | `pnpm build`     | Production build                                |
 | `pnpm format`    | Prettier                                        |
 
+## Editing content
+
+All copy lives in [`src/content/`](src/content) as typed data: profile, projects, experience,
+skills and certifications. It's validated with zod when the site builds, so a typo
+(bad date, broken link, a skill pointing at a project that doesn't exist) fails the build
+with a message naming the exact field. Run `pnpm content:todo` to see what's still a placeholder.
+
 ## Roadmap
 
 1. Scaffold & tooling ✅
 2. Design system (tokens, theme, layout shell) ✅
-3. Content layer (typed, zod-validated)
+3. Content layer (typed, zod-validated) ✅
 4. Sections (hero, projects, experience, skills, certifications)
 5. Contact form (server action, Mailer → SES, Turnstile)
 6. SEO (metadata, OG image, sitemap, JSON-LD)

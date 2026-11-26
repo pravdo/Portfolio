@@ -3,19 +3,14 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { Footer } from "@/components/layout/Footer";
 import { Header, type NavItem } from "@/components/layout/Header";
 import { SkipLink } from "@/components/layout/SkipLink";
+import { content } from "@/content";
 import { themeInitScript } from "@/lib/theme";
 import "@/styles/globals.scss";
 
 const geistSans = Geist({ subsets: ["latin"], variable: "--font-geist-sans" });
 const geistMono = Geist_Mono({ subsets: ["latin"], variable: "--font-geist-mono" });
 
-// TODO(step 3): these move into src/content/profile.ts.
-const site = {
-  name: "Your Name",
-  githubUrl: "https://github.com/pravdo",
-  linkedinUrl: "https://www.linkedin.com/",
-  sourceUrl: "https://github.com/pravdo/Portfolio",
-};
+const { profile } = content;
 
 const nav: NavItem[] = [
   { href: "/#projects", label: "Projects" },
@@ -25,8 +20,8 @@ const nav: NavItem[] = [
 ];
 
 export const metadata: Metadata = {
-  title: "Portfolio",
-  description: "Full-stack engineer — Angular, NestJS, .NET, AWS.",
+  title: `${profile.name} — ${profile.role}`,
+  description: profile.tagline,
 };
 
 export const viewport: Viewport = {
@@ -49,15 +44,15 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       </head>
       <body>
         <SkipLink />
-        <Header name={site.name} nav={nav} />
+        <Header name={profile.name} nav={nav} />
         <main id="main" tabIndex={-1}>
           {children}
         </main>
         <Footer
-          name={site.name}
-          githubUrl={site.githubUrl}
-          linkedinUrl={site.linkedinUrl}
-          sourceUrl={site.sourceUrl}
+          name={profile.name}
+          githubUrl={profile.social.github}
+          linkedinUrl={profile.social.linkedin}
+          sourceUrl={profile.sourceUrl}
         />
       </body>
     </html>
