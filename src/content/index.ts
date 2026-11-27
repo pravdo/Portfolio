@@ -4,11 +4,13 @@ import { experience } from "./experience";
 import { profile } from "./profile";
 import { projects } from "./projects";
 import { ContentSchema, type Content } from "./schema";
+import { sections } from "./sections";
 import { skills } from "./skills";
 
 function load(): Content {
   const result = ContentSchema.safeParse({
     profile,
+    sections,
     projects,
     experience,
     skills,

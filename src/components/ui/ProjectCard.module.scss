@@ -1,0 +1,82 @@
+@use "mixins" as *;
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding: var(--space-5);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  @include transition(border-color, box-shadow);
+
+  &:hover {
+    border-color: var(--color-border-strong);
+    box-shadow: var(--shadow-md);
+  }
+
+  // Highlight when reached from a skill's "used in" link.
+  &:target {
+    border-color: var(--color-accent);
+  }
+}
+
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+.name {
+  font-size: var(--text-xl);
+}
+
+.problem {
+  font-weight: var(--weight-medium);
+  line-height: var(--leading-snug);
+}
+
+.summary {
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+}
+
+.footer {
+  display: grid;
+  gap: var(--space-2);
+  margin-top: auto;
+  padding-top: var(--space-4);
+  border-top: var(--border-width) solid var(--color-border);
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-5);
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    min-height: 2.75rem;
+    font-size: var(--text-sm);
+    font-weight: var(--weight-medium);
+    text-decoration: none;
+  }
+}
+
+.soon,
+.demo {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.soon {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  min-height: 2.75rem;
+  display: flex;
+  align-items: center;
+}

@@ -1,0 +1,92 @@
+@use "mixins" as *;
+
+.form {
+  display: grid;
+  gap: var(--space-5);
+  width: 100%;
+  max-width: 36rem;
+}
+
+.field {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.label {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+}
+
+.input {
+  width: 100%;
+  min-height: 2.75rem;
+  padding: var(--space-2) var(--space-3);
+  border: var(--border-width) solid var(--color-border-strong);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+  color: var(--color-text);
+  @include transition(border-color, box-shadow);
+
+  &:hover {
+    border-color: var(--color-text-muted);
+  }
+
+  &:focus-visible {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px var(--color-accent-soft);
+  }
+
+  &[aria-invalid="true"] {
+    border-color: var(--color-danger);
+  }
+}
+
+textarea.input {
+  resize: vertical;
+  line-height: var(--leading-normal);
+}
+
+.error {
+  font-size: var(--text-sm);
+  color: var(--color-danger);
+}
+
+.honeypot {
+  @include visually-hidden;
+}
+
+.turnstile {
+  min-height: 65px; // reserve space so the layout doesn't jump when the widget loads
+}
+
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.status {
+  font-size: var(--text-sm);
+  color: var(--color-danger);
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.success {
+  display: grid;
+  gap: var(--space-2);
+  width: 100%;
+  max-width: 36rem;
+  padding: var(--space-5);
+  border: var(--border-width) solid var(--color-accent);
+  border-radius: var(--radius-md);
+  background: var(--color-accent-soft);
+}
+
+.successTitle {
+  font-weight: var(--weight-semibold);
+}
